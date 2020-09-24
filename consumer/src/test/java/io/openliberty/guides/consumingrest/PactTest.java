@@ -17,9 +17,9 @@ public class PactTest {
     Consumer consumer;
 
     @Rule
-    public PactProviderRule mockProvider = new PactProviderRule("ExampleProvider", this);
+    public PactProviderRule mockProvider = new PactProviderRule("Provider", this);
 
-//    @Pact(consumer = "JunitRuleConsumer")
+//    @Pact(consumer = "Consumer")
 //    public RequestResponsePact createPact(PactDslWithProvider builder) {
 //        Map<String, String> headers = new HashMap<String, String>();
 //        headers.put("Content-Type", "application/json;charset=UTF-8");
@@ -37,14 +37,14 @@ public class PactTest {
 //                .toPact();
 //    }
 
-    @Pact(consumer = "JunitRuleConsumer")
+    @Pact(consumer = "Consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "application/json");
 
         return builder
                 .given("")
-                .uponReceiving("Pact JVM example Pact interaction")
+                .uponReceiving("a request for artists")
                 .path("/artists")
 //                .query("")
                 .method("GET")
@@ -56,7 +56,7 @@ public class PactTest {
     }
 
     @Test
-    @PactVerification("ExampleProvider")
+    @PactVerification("Provider")
     public void runTest() {
 
         Consumer consumer = new Consumer(mockProvider.getUrl());

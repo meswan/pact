@@ -98,6 +98,10 @@
                             <pactFileDirectory>target/pacts</pactFileDirectory>
                         </serviceProvider>
                     </serviceProviders>
+                    <projectVersion>1.0.100</projectVersion>
+                    <trimSnapshot>true</trimSnapshot> <!-- Defaults to false -->
+                    <skipPactPublish>false</skipPactPublish> <!-- Defaults to false -->
+                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
                 </configuration>
             </plugin>
             <plugin>
